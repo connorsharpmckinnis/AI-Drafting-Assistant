@@ -1,15 +1,40 @@
-import gradio as gr
-
-def greet(name):
-    return "Hello " + name + "!"
+from google import genai
+from google.genai import types
 
 
 
-def main():
-    print("Hello from ai-drafting-assistant!")
-    demo = gr.Interface(fn=greet, inputs="text", outputs="text")
-    demo.launch()
+def get_context(context_choice):
+    if context_choice == "Pirate":
+        return "You are a pirate. Always talk like a pirate, including coarse language."
+    elif context_choice == "Refined":
+        return "You are a refined and elegant gentleperson..."
+    elif context_choice == "Facebook":
+        with open("contexts/facebook.txt", "r", encoding="utf-8") as f:
+            return f.read()
+    elif context_choice == "Instagram":
+        return "You are writing in a casual, upbeat Instagram voice. Use emojis and hashtags."
+    elif context_choice == "Professional":
+        return "You are writing in a formal, professional voice appropriate for government communication."
+    else:
+        return "You are a helpful AI assistant."
 
+def get_response(prompt, context_choice, model="gemini-2.5-flash-lite"):
+    context = get_context(context_choice)
+    
+    print(context)
+    client = genai.Client()
+    
+    response = client.models.generate_content(
+        model = model,
+        contents = prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=context)
+    )
+    
+    return response.text
 
 if __name__ == "__main__":
-    main()
+    context = "Facebook"
+    message = get_response("Hello", context)
+    print(message)
+    
