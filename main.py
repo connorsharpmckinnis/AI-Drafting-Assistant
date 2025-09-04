@@ -1,5 +1,6 @@
 from google import genai
 from google.genai import types
+import os
 
 
 
@@ -20,9 +21,10 @@ def get_context(context_choice):
 
 def get_response(prompt, context_choice, model="gemini-2.5-flash-lite"):
     context = get_context(context_choice)
-    
+    api_key = os.environ.get("GOOGLE_API_KEY")
+
     print(context)
-    client = genai.Client()
+    client = genai.Client(api_key=api_key)
     
     response = client.models.generate_content(
         model = model,
