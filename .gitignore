@@ -1,0 +1,149 @@
+# AI Drafting Assistant
+# Ignore local runtime, secrets, model weights, and operational data.
+# Source, lockfile, and Python version pin stay tracked.
+
+# --- Secrets and credentials ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.kdbx
+credentials.json
+credentials*.json
+secrets.json
+secrets*.json
+*service-account*.json
+*serviceAccount*.json
+.google/
+gcloud/
+token.json
+client_secret*.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Test, type-check, and lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.cache/
+
+# --- uv ---
+# Keep uv.lock. Ignore the local package cache only.
+.uv/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# --- Gradio local runtime ---
+# Certificates, flagged datasets, and the component cache are machine-local.
+.gradio/
+
+# --- Model weights ---
+# Do not publish trained or downloaded weights.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.gguf
+*.tflite
+*.pb
+*.h5
+*.hdf5
+*.joblib
+*.pkl
+*.pickle
+pytorch_model.bin
+model.safetensors
+models/
+checkpoints/
+checkpoint-*/
+weights/
+wandb/
+mlruns/
+runs/
+
+# --- Operational data ---
+# Local inputs, generated outputs, and logs. Commit fixtures under a
+# tracked path such as examples/ if a sample is meant to be public.
+data/
+datasets/
+raw/
+processed/
+outputs/
+output/
+results/
+logs/
+*.log
+uploads/
+tmp/
+temp/
+*.tmp
+
+# --- Editors and OS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.history/
+
+# --- Docker local overrides ---
+docker-compose.override.yml
+.docker/
